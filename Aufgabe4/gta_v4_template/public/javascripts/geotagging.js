@@ -24,7 +24,7 @@ function updateLocation(tags = ""){
             var mapManager = new MapManager("jSDyDl8WcMaEG0bQrr55wCuOQmEbNjwy");
 
             let data = GET_fetch_data(latitude, longitude) // Daten in JSON Datei schreiben
-            fetch("http://localhost:3000/api/geotags?q="+JSON.stringify(data), {
+            fetch("http://localhost:3000/api/geotags/pagination/1?q="+JSON.stringify(data), {
                 method: "GET"
             })
                 .then(response => response.json())
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLocation();
 });
 
-document.getElementById("addTag").addEventListener("click", () => {
+document.getElementById("addTag").addEventListener("click", async(event) => {
     // Wenn "addTag" input angeklickt wird
     let latitude = document.getElementById("latitude").value;
     let longitude = document.getElementById("longitude").value;
@@ -81,7 +81,7 @@ document.getElementById("addTag").addEventListener("click", () => {
         };
 
         console.log(data);
-        fetch("http://localhost:3000/api/geotags", { // Daten werden im Body übergeben
+        fetch("http://localhost:3000/api/geotags/pagination", { // Daten werden im Body übergeben
             method: "POST",
             body: JSON.stringify(data),
             headers: {"Content-Type": "application/json"}
@@ -91,6 +91,9 @@ document.getElementById("addTag").addEventListener("click", () => {
                 pasteFetchResults(data); // Fetch daten werden in HTML Elemente eingefügt
                 document.getElementById("name").value = ""; // HTML input "name" wird geleert
                 document.getElementById("hashtag").value = ""; // HTML input "hashtag" wird geleert
+                document.getElementById("currentPage").value = 1;
+                document.getElementById("maxPage").value = data.pagination[1];
+                document.getElementById("infoP").innerHTML = "Page " + data.pagination[0] + "/" + data.pagination[1] + " (" + data.pagination[2] + ")";
                 updateLocation(data.taglist); // Map mit neuen Tags wird generiert
             })
             .catch(error => console.error('Fehler:', error))
@@ -99,7 +102,7 @@ document.getElementById("addTag").addEventListener("click", () => {
 document.getElementById("searchSubmit").addEventListener("click", () => {
     // Wenn "searchSubmit" input angeklickt wird
     let data = GET_fetch_data ()
-    fetch("http://localhost:3000/api/geotags?q="+JSON.stringify(data), { // Daten werden als Queryparameter übergeben
+    fetch("http://localhost:3000/api/geotags/pagination/1?q="+JSON.stringify(data), { // Daten werden als Queryparameter übergeben
         method: "GET"
     })
         .then(response => response.json())
@@ -110,6 +113,66 @@ document.getElementById("searchSubmit").addEventListener("click", () => {
             updateLocation(data.taglist); // Map mit neuen Tags wird generiert
         }
 )       .catch(error => console.error('Fehler:', error));
+});
+
+document.getElementById("btn-l").addEventListener("click", async(event) =>{
+    let currentPage = document.getElementById("currentPage").value;
+
+
+    if (currentPage !== 1){
+        if (document.getElementById("btn-r").disabled == true){
+            document.getElementById("btn-r").disabled = false;
+        }
+        if (parseInt(currentPage) - 1 === 1) {
+            document.getElementById("btn-l").disabled = true;
+        }
+        let data = GET_fetch_data ();
+        fetch("http://localhost:3000/api/geotags/pagination/"+ (parseInt(currentPage)-1) +"?q="+JSON.stringify(data), { // Daten werden als Queryparameter übergeben
+            method: "GET"
+        })
+            .then(response => response.json())
+            .then(data => {
+                    // generate new taglist
+                    pasteFetchResults(data); // Fetch daten werden in HTML Elemente eingefügt
+                    document.getElementById("searchField").value = ""; // HTML input "searchField" wird geleert
+                    document.getElementById("currentPage").value = (parseInt(currentPage)-1);
+                    document.getElementById("infoP").innerHTML = "Page " + data.pagination[0] + "/" + data.pagination[1] + " (" + data.pagination[2] + ")";
+                    updateLocation(data.taglist); // Map mit neuen Tags wird generiert
+                }
+            )       .catch(error => console.error('Fehler:', error));
+    } else {
+        document.getElementById("btn-l").disabled = true;
+    }
+});
+
+document.getElementById("btn-r").addEventListener("click", async(event) =>{
+    let currentPage = document.getElementById("currentPage").value;
+    let maxPage = document.getElementById("maxPage").value;
+    console.log("btn-r");
+    if (currentPage < maxPage){
+        if (document.getElementById("btn-l").disabled == true){
+            document.getElementById("btn-l").disabled = false;
+        }
+        if (parseInt(currentPage) + 1 === parseInt(maxPage)) {
+            document.getElementById("btn-r").disabled = true;
+        }
+        let data = GET_fetch_data();
+        fetch("http://localhost:3000/api/geotags/pagination/"+(parseInt(currentPage)+1)+"?q="+JSON.stringify(data), { // Daten werden als Queryparameter übergeben
+            method: "GET"
+        })
+            .then(response => response.json())
+            .then(data => {
+                    // generate new taglist
+                    pasteFetchResults(data); // Fetch daten werden in HTML Elemente eingefügt
+                    document.getElementById("searchField").value = ""; // HTML input "searchField" wird geleert
+                    document.getElementById("currentPage").value = (parseInt(currentPage)+1);
+                    document.getElementById("infoP").innerHTML = "Page " + data.pagination[0] + "/" + data.pagination[1] + " (" + data.pagination[2] + ")";
+                    updateLocation(data.taglist); // Map mit neuen Tags wird generiert
+                }
+            )       .catch(error => console.error('Fehler:', error));
+    } else {
+        document.getElementById("btn-r").disabled = true;
+    }
 });
 
 function GET_fetch_data(latitude = "", longitude = ""){
