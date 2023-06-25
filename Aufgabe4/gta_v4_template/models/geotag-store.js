@@ -27,23 +27,58 @@ const GeoTagExamples = require("./geotag-examples");
  * - Keyword matching should include partial matches from name or hashtag fields. 
  */
 class InMemoryGeoTagStore{
-    static getGeoTags() {
-        return this.#geoTags;
+    static getGeoTags(page = -1) { //todo pagination
+        console.log("[getGeoTags] -> " + page);
+        return this.pagination(this.#geoTags, page);
     }
-    static #geoTags = [];
+
+    static getGeoTag(index){ //Get geotag by index
+        try{
+            index = parseInt(index);
+            return this.#geoTags[index];
+        } catch (e){
+            throw new Error(e);
+            return 0;
+        }
+    }
+
+    static #maxItems = 6;
+    static #geoTags = this.addGeoTagExamples();
+
+
+    static addGeoTagExamples(){
+        let arr = GeoTagExamples.tagList;
+        let arr2 = [];
+        for (let i = 0; i < arr.length; i++){
+            arr2.push(new GeoTag(arr[i][1], arr[i][2], arr[i][0], arr[i][3]));
+        }
+        return arr2;
+    }
 
     static addGeoTag(lat, long, nm, ht){
         // If GeoTag latitude, longitude, name, hashtag is provided, create new GeoTag, then add to [geoTags] array
         var tag = new GeoTag(lat, long, nm, ht);
         this.#geoTags.push(tag);
+        return tag;
     }
 
-    static addGeoTagExamples(){
-        if (this.#geoTags.length == 0){
-            var v = GeoTagExamples.tagList;
-            for (let i = 0; i < v.length; i++){
-                this.addGeoTag(v[i][1], v[i][2], v[i][0], v[i][3]);
-            }
+    static setGeoTag(lat, long, nm, ht, index){
+        try{
+            let tag = new GeoTag(lat, long, nm, ht);
+            this.#geoTags[index] = tag;
+            return tag;
+        } catch (e){
+            throw new Error(e);
+        }
+    }
+
+    static deleteGeoTag(i){ // Delete geotag and return the deleted geotag
+        try {
+            let tag = this.#geoTags[i];
+            this.#geoTags.splice(i, 1);
+            return tag;
+        } catch (e) {
+            throw new Error(e);
         }
     }
 
@@ -57,7 +92,7 @@ class InMemoryGeoTagStore{
         }
     }
 
-    static getNearbyGeoTags(lat, long, radius){
+    static getNearbyGeoTags(lat, long, radius, page = -1){ //todo Pagination
         // return array of all geotags within radius of positon ([latitude], [longitude])
         var arr = [];
         for (var i = 0; i < this.#geoTags.length; i++){
@@ -65,7 +100,7 @@ class InMemoryGeoTagStore{
                 arr.push(this.#geoTags[i]);
             }
         } 
-        return arr;
+        return this.pagination(arr, page);
     }
 
     static dist(lat1, lon1, lat2, lon2){
@@ -85,18 +120,32 @@ class InMemoryGeoTagStore{
         return rad * c;
     }
 
-    static searchNearbyGeoTags(lat, long, radius, keyword){
+    static searchNearbyGeoTags(lat, long, radius, keyword, page = -1){ // todo Pagination
         // get array of all geotags within radius of positon ([latitude], [longitude])
         // then add to [arr2] any geotags with partial string in keyword 
-        var arr = this.getNearbyGeoTags(lat, long, radius);
+        var arr = this.getNearbyGeoTags(lat, long, radius, -1);
         var arr2 = [];
         for (var i = 0; i < arr.length; i++){
             if (arr[i].name.toLowerCase().indexOf(keyword.toLowerCase()) > -1 || arr[i].hashtag.toLowerCase().indexOf(keyword.toLowerCase()) > -1){
                 arr2.push(arr[i]);
             }
         }
-        return arr2;
+        return this.pagination(arr2, page);
+    }
+
+    static pagination(arr, page){
+        if (page === -1) {return [arr.slice(0, (arr.length < 6 ? arr.length : 6)) ,[(arr.length === 0 ? 0 : 1),Math.ceil(arr.length/this.#maxItems), arr.length]]}
+        page = page - 1;
+        let itemCount = arr.length;
+        let maxPage = Math.ceil(itemCount/this.#maxItems);
+        return [(itemCount <= this.#maxItems ? arr :
+                arr.slice(page * this.#maxItems,
+                    ((page+1) * this.#maxItems >= itemCount ? itemCount : (page+1) * this.#maxItems)
+                )
+        ), [page + 1, maxPage, itemCount]];
     }
 }
+
+
 
 module.exports = InMemoryGeoTagStore

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="28bb8e12-875b-4a9f-ad23-cb47cd192daa" name="Changes" comment="Working Version 1.2">
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/models/geotag-examples.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/models/geotag-store.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/models/geotag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/public/javascripts/geotagging.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/public/javascripts/location-helper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/public/javascripts/map-manager.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/public/stylesheets/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe3/gta_v3/models/geotag-store.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe3/gta_v3/models/geotag-store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe3/gta_v3/models/geotag.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe3/gta_v3/models/geotag.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe3/gta_v3/public/javascripts/geotagging.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe3/gta_v3/public/javascripts/geotagging.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe3/gta_v3/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe3/gta_v3/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Aufgabe4/gta_v4_template/routes/index.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QmnwUBKEYT1QsA7wjFPA2mWosv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;JurisBranch&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/juriv/OneDrive - bwedu/MINB Semester 2/[Modul] Verteilte Systeme Labor/vs1lab&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2023.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\juriv\OneDrive - bwedu\MINB Semester 2\[Modul] Verteilte Systeme Labor\vs1lab\Aufgabe4\gta_v4_template\views" />
+      <recent name="C:\Users\juriv\OneDrive - bwedu\MINB Semester 2\[Modul] Verteilte Systeme Labor\vs1lab\Aufgabe4\gta_v4_template" />
+      <recent name="C:\Users\juriv\OneDrive - bwedu\MINB Semester 2\[Modul] Verteilte Systeme Labor\vs1lab\Aufgabe4\gta_v4_template\routes" />
+      <recent name="C:\Users\juriv\OneDrive - bwedu\MINB Semester 2\[Modul] Verteilte Systeme Labor\vs1lab\Aufgabe4\gta_v4_template\models" />
+      <recent name="C:\Users\juriv\OneDrive - bwedu\MINB Semester 2\[Modul] Verteilte Systeme Labor\vs1lab\Aufgabe4\gta_v4_template\public\javascripts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\juriv\OneDrive - bwedu\MINB Semester 2\[Modul] Verteilte Systeme Labor\vs1lab\Aufgabe4\gta_v4_template\public\stylesheets" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="28bb8e12-875b-4a9f-ad23-cb47cd192daa" name="Changes" comment="" />
+      <created>1685967863184</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685967863184</updated>
+      <workItem from="1685967864952" duration="4831000" />
+      <workItem from="1685997614726" duration="720000" />
+      <workItem from="1686043959130" duration="194000" />
+      <workItem from="1686049437235" duration="1676000" />
+      <workItem from="1686409775469" duration="156000" />
+      <workItem from="1686556966220" duration="2867000" />
+      <workItem from="1686581454257" duration="1032000" />
+      <workItem from="1686594778513" duration="2834000" />
+      <workItem from="1686730871628" duration="5011000" />
+      <workItem from="1686751322140" duration="3937000" />
+      <workItem from="1686758839971" duration="94000" />
+      <workItem from="1686758947848" duration="4864000" />
+      <workItem from="1686774514164" duration="1311000" />
+      <workItem from="1686820990781" duration="2546000" />
+    </task>
+    <task id="LOCAL-00001" summary="Working Version 1.0">
+      <created>1685972604505</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685972604505</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Working Version 1.0">
+      <created>1685972644200</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685972644200</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Working Version 1.1">
+      <created>1685998327795</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685998327795</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Working Version 1.2">
+      <created>1686050977628</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686050977628</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Working Version 1.0" />
+    <MESSAGE value="Working Version 1.1" />
+    <MESSAGE value="Working Version 1.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working Version 1.2" />
+  </component>
+</project>
